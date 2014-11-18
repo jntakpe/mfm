@@ -1,10 +1,227 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+<head>
     <meta charset="UTF-8">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MforMonitoring">
+    <meta name="author" content="jntakpe">
+
+    <title>MforMonitoring</title>
+
+    <link rel="shortcut icon" href="static/images/favicon.ico">
+    <link rel="stylesheet" href="static/css/css-core.min.css"/>
+    <link rel="stylesheet" href="static/css/css-theme.css"/>
+    <link rel="stylesheet" href="static/css/mfm.css"/>
 </head>
-<body>
-<h1>YEAH BABY</h1>
+<body class="layout-boxed ec-layout">
+<div class="main-wrapper">
+    <div class="site-canvas">
+        <header class="ec-header navbar navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="#/" class="navbar-brand">
+                        <img src="static/images/logo.svg" alt="Banque en ligne - BforBank">
+                    </a>
+                </div>
+                <ul class="nav navbar-header-toolbar">
+                    <li><a href="/logout"><i class="fa fa-power-off"></i>DÉCONNEXION</a></li>
+                    <li><a href="#"><i class="fa fa-phone"></i>TEL</a></li>
+                    <li><a href="#"><i class="fa fa-headphones"></i>CALLBACK</a></li>
+                </ul>
+            </div>
+        </header>
+        <header class="ec-header-sm">
+            <a href="#" class="ec-header-sm-menu toggle-nav">☰</a>
+            <a href="#" class="ec-header-sm-logout"><i class="fa fa-power-off"></i></a>
+
+            <div class="ec-header-sm-logo">
+                <img src="static/images/logo.svg" alt="Banque en ligne - BforBank">
+            </div>
+        </header>
+        <div class="nav-left">
+            <nav class="navbar-content">
+                <div class="main-navigation left-wrapper transition-left">
+                    <ul class="main-navigation-menu">
+                        <li class="active"><a href="javascript:void(0)"><i class="fa fa-calculator"></i><span
+                                class="title"> MES COMPTES</span></a>
+                            <ul class="sub-menu">
+                                <li><a href="javascript:void(0)">Synthèse</a></li>
+                                <li class="active"><a href="javascript:void(0)">Compte et carte</a>
+                                    <ul class="sub-menu">
+                                        <li class="active"><a href="javascript:void(0)">
+
+                                            Mr Jean Moulin<br/>
+                                            Compte n° 123 765 789</a></li>
+                                        <li><a href="javascript:void(0)">
+
+                                            Mm Jeanne Moulin<br/>
+                                            Compte n° 123 765 789</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:void(0)">Assurances</a></li>
+                                <li><a href="javascript:void(0)">Livrets</a></li>
+                                <li><a href="javascript:void(0)">Assurance vie</a></li>
+                                <li><a href="javascript:void(0)">Titres</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:void(0)"><i class="fa fa-exchange"></i><span
+                                class="title"> VIREMENTS </span></a></li>
+                        <li><a href="javascript:void(0)"><i class="fa fa-list-alt"></i><span class="title"> RIB </span></a>
+                        </li>
+                        <li><a href="javascript:void(0)"><i class="fa fa-cogs"></i><span
+                                class="title"> MES SERVICES</span></a></li>
+                        <li><a href="javascript:void(0)"><i class="fa fa-file-text-o"></i><span class="title"> MES DOCUMENTS</span></a>
+                        </li>
+                        <li><a href="javascript:void(0)"><i class="fa fa-user"></i><span
+                                class="title"> MON PROFIL</span></a></li>
+                        <li><a href="javascript:void(0)"><i class="fa fa-certificate"></i><span class="title"> MES OFFRES</span></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </nav>
+        </div>
+        <div class="ec-main-container inner">
+            <div class="main-content">
+                <div class="page-content">
+                    <div class="tabbable">
+                        <ul class="nav nav-tabs">
+                            <li><a href="#">Faire un virement</a></li>
+                            <li class="active"><a href="#">Gérer mes bénéficiaires</a></li>
+                            <li><a href="#">Suivre et gérer mes virements</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="subnav-tabs-item">Ajouter un bénéficiaire</div>
+                            <ul class="nav subnav-tabs">
+                                <li><a data-toggle="tab" href="#panel_tab_1">Mes bénéficiaires</a></li>
+                                <li class="active"><a data-toggle="tab" href="#panel_tab_1">Ajouter un bénéficiaire</a>
+                                </li>
+                            </ul>
+                            <div class="tab-pane active">
+                                <h1>Ajouter un bénéficiaire</h1>
+
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p><br>
+
+                                <form action="#" role="form" class="form-horizontal">
+                                    <div class="content-group content-boxed">
+                                        <div class="form-group first-group">
+                                            <label class="col-sm-3">Je souhaite ajouter</label>
+
+                                            <div class="col-sm-6">
+                                                <select>
+                                                    <option value="">Un compte que je détiens dans une autre banque
+                                                    </option>
+                                                    <option value="">Un compte détenu par un tiers</option>
+                                                </select>
+
+                                                <div title="" data-content="Texte à définir" data-placement="top"
+                                                     data-trigger="hover" data-rel="popover" data-container="body"
+                                                     class="m-help-button information input-absolute popovers s-sm"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3">Titulaire du compte</label>
+
+                                            <div class="col-sm-6">
+                                                <input type="text" name="" placeholder="" value="Jean Luc Dubois"
+                                                       disabled>
+
+                                                <div title="" data-content="Texte à définir" data-placement="top"
+                                                     data-trigger="hover" data-rel="popover" data-container="body"
+                                                     class="m-help-button information input-absolute popovers s-sm"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3">Autre titulaire du compte (prénom et nom) si compte
+                                                joint</label>
+
+                                            <div class="col-sm-6">
+                                                <input type="text" name="" placeholder="">
+
+                                                <div title="" data-content="Texte à définir" data-placement="top"
+                                                     data-trigger="hover" data-rel="popover" data-container="body"
+                                                     class="m-help-button information input-absolute popovers s-sm"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3">Titulaire du compte (prénom et nom)</label>
+
+                                            <div class="col-sm-6">
+                                                <input type="text" name="" placeholder="">
+
+                                                <div title="" data-content="Texte à définir" data-placement="top"
+                                                     data-trigger="hover" data-rel="popover" data-container="body"
+                                                     class="m-help-button information input-absolute popovers s-sm"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3">IBAN</label>
+
+                                            <div class="col-sm-6">
+                                                <input type="text" name="" placeholder="">
+
+                                                <div title="" data-content="Texte à définir" data-placement="top"
+                                                     data-trigger="hover" data-rel="popover" data-container="body"
+                                                     class="m-help-button information input-absolute popovers s-sm"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3">Libellé du compte</label>
+
+                                            <div class="col-sm-6">
+                                                <input type="text" name="" placeholder="">
+
+                                                <div title="" data-content="Texte à définir" data-placement="top"
+                                                     data-trigger="hover" data-rel="popover" data-container="body"
+                                                     class="m-help-button information input-absolute popovers s-sm"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pull-right">
+                                        <button data-target=".modal-mire" data-toggle="modal"
+                                                class="btn btn-primary btn-squared"> Valider
+                                        </button>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div aria-hidden="true" role="dialog" tabindex="-1" class="modal modal-mire fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button aria-hidden="true" data-dismiss="modal" type="button" class="close">×
+                                    </button>
+                                    <h4 class="modal-title">Code de sécurité</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Nam sole orto magnitudine angusti gurgitis sed profundi a transitu arcebantur et
+                                        dum piscatorios quaerunt lenunculos vel innare temere.</p>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div style="width: 100%; height: 200px; background-color: #EEE"></div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form action="#" role="form" class="form-horizontal">
+                                                <input type="text" name="name" placeholder="" class="form-control">
+                                                <button class="btn btn-primary btn-squared btn-block margin-top">
+                                                    Valider
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="static/js/js-core.min.js"></script>
 </body>
 </html>

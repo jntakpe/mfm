@@ -1,0 +1,59 @@
+@-ms-viewport {
+  width: auto !important;
+}
+/* ---------------------------------------------------------------------- */
+/*  Only larger Devices
+/* ---------------------------------------------------------------------- */
+@media (min-width: 480px) {
+  /* 992px */
+}
+@media (min-width: 1200px) {
+  /* 1200px */
+}
+/* ---------------------------------------------------------------------- */
+/*  Small Devices Only
+/* ---------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  /* 767px */
+  label {
+    padding-bottom: 3px;
+  }
+}
+/* ---------------------------------------------------------------------- */
+/*  From Small Devices Up To Medium Devices
+/* ---------------------------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 991px) {
+  /* 768px - 991px */
+}
+/* ---------------------------------------------------------------------- */
+/*  Up To Medium Devices
+ /* ---------------------------------------------------------------------- */
+@media (max-width: 991px) {
+  .main-container {
+    margin-left: 0 !important;
+  }
+  .sidebar-mobile-open .main-container {
+    left: 250px !important;
+  }
+
+  .main-content .container > .row, #ajax-content > .row {
+    padding: 0;
+  }
+
+  .main-content .row {
+    padding: 0;
+  }
+
+  .main-content, footer .footer-inner {
+    position: relative;
+    margin-left: 0 !important;
+  }
+
+  .sidebar-mobile-open footer {
+    left: 250px !important;
+  }
+
+  .popover.top > .arrow {
+    display: none;
+  }
+}

@@ -1,0 +1,12 @@
+info:
+  app:
+    name: ${project.name}
+    description: ${project.description}
+    artifactId: ${project.artifactId}
+    version: ${project.version}
+management:
+  context-path: /manage
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost/mfm

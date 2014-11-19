@@ -2,7 +2,6 @@ package com.github.jntakpe.mfm.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 
 /**
  * Bean représentant les métriques relatives à : JVM, mémoire, processors, gc, etc ...
@@ -11,9 +10,6 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Metrics extends MongoEntity {
-
-    @DBRef
-    private Project project;
 
     private long mem;
 
@@ -62,14 +58,6 @@ public class Metrics extends MongoEntity {
 
     @JsonProperty("gc.ps_marksweep.count")
     private long gcMarkSweepCount;
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
 
     public long getMem() {
         return mem;

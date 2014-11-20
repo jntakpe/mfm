@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="static/css/css-theme.css"/>
     <link rel="stylesheet" href="static/css/mfm.css"/>
 </head>
-<body class="layout-boxed ec-layout">
+<body class="layout-boxed ec-layout" ng-app="mfmApp">
 <div class="main-wrapper">
     <div class="site-canvas">
         <header class="ec-header navbar navbar-fixed-top">
@@ -73,30 +73,16 @@
         </div>
         <div class="ec-main-container inner">
             <div class="main-content">
-                <div class="page-content">
-                    <div class="tabbable">
-                        <ul class="nav nav-tabs">
-                            <li><a href="#">Faire un virement</a></li>
-                            <li class="active"><a href="#">Gérer mes bénéficiaires</a></li>
-                            <li><a href="#">Suivre et gérer mes virements</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="subnav-tabs-item">Ajouter un bénéficiaire</div>
-                            <ul class="nav subnav-tabs">
-                                <li><a data-toggle="tab" href="#panel_tab_1">Mes bénéficiaires</a></li>
-                                <li class="active"><a data-toggle="tab" href="#panel_tab_1">Ajouter un bénéficiaire</a>
-                                </li>
-                            </ul>
-                            <div class="tab-pane active">
-                                <h1>Ajouter un bénéficiaire</h1>
-                            </div>
-                        </div>
-                    </div>
+                <!--Contenu de la page-->
+                <div class="page-content" ng-view>
+
                 </div>
+                <!--Fin du contenu de la page-->
             </div>
         </div>
     </div>
 </div>
 <script src="static/js/js-core.min.js"></script>
+<script src="static/js/app.js"></script>
 </body>
 </html>

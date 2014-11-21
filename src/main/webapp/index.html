@@ -19,7 +19,7 @@
         <header class="ec-header navbar navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="#/" class="navbar-brand">
+                    <a href="#" class="navbar-brand">
                         <img src="static/images/logo.svg" alt="Banque en ligne - BforBank">
                     </a>
                 </div>
@@ -37,12 +37,14 @@
                 <img src="static/images/logo.svg" alt="Banque en ligne - BforBank">
             </div>
         </header>
-        <div class="nav-left">
-            <nav class="navbar-content">
+        <div class="nav-left" ng-controller="MenuCtrl as menu">
+            <nav class="navbar-content" ng-init="menu.activeMenu = 'projects'">
                 <div class="main-navigation left-wrapper transition-left">
                     <ul class="main-navigation-menu">
-                        <li class="active"><a href="javascript:void(0)"><i class="fa fa-calculator"></i><span
-                                class="title"> Projets</span></a>
+                        <li ng-click="menu.activeMenu = 'projects'"
+                            ng-class="menu.activeMenu === 'projects' ? 'active' : ''">
+                            <a href="javascript:void(0)"><i class="fa fa-calculator"></i>
+                                <span class="title"> Projets</span></a>
                             <ul class="sub-menu">
                                 <li><a href="javascript:void(0)">Entrée en relation</a></li>
                                 <li class="active"><a href="javascript:void(0)">Espace client</a>
@@ -62,8 +64,29 @@
                                 <li><a href="javascript:void(0)">États</a></li>
                             </ul>
                         </li>
-                        <li><a href="javascript:void(0)"><i class="fa fa-exchange"></i><span
-                                class="title"> Services </span></a></li>
+                        <li ng-click="menu.activeMenu = 'services'"
+                            ng-class="menu.activeMenu === 'services' ? 'active' : ''">
+                            <a href="javascript:void(0)"><i class="fa fa-exchange"></i>
+                                <span class="title"> Services </span></a>
+                            <ul class="sub-menu">
+                                <li><a href="javascript:void(0)">Entrée en relation</a></li>
+                                <li class="active"><a href="javascript:void(0)">Espace client</a>
+                                    <ul class="sub-menu">
+                                        <li class="active"><a href="javascript:void(0)">
+                                            Dashboard
+                                        </a></li>
+                                        <li><a href="javascript:void(0)">
+                                            Métriques
+                                        </a></li>
+                                        <li><a href="javascript:void(0)">
+                                            Historique
+                                        </a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="javascript:void(0)">BSS</a></li>
+                                <li><a href="javascript:void(0)">États</a></li>
+                            </ul>
+                        </li>
                         <li><a href="javascript:void(0)"><i class="fa fa-list-alt"></i><span class="title"> RIB </span></a>
                         </li>
                     </ul>
@@ -83,6 +106,8 @@
     </div>
 </div>
 <script src="static/js/js-core.min.js"></script>
+<script src="static/js/menu.js"></script>
+<script src="static/js/home/controller.js"></script>
 <script src="static/js/app.js"></script>
 </body>
 </html>

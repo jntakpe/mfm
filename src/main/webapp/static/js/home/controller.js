@@ -1,0 +1,3 @@
+menuApp.controller('HomeCtrl', function () {
+
+});

@@ -1,13 +1,13 @@
 <li ng-class="{active: active.sub === application}">
     <a href="javascript:void(0)">{{description}}</a>
     <ul class="sub-menu">
-        <li class="active"><a href="javascript:void(0)">
+        <li class="active"><a ng-href="/projects/{{application}}/dashboard">
             Dashboard
         </a></li>
-        <li><a href="javascript:void(0)">
+        <li><a ng-href="/projects/{{application}}/metrics">
             Métriques
         </a></li>
-        <li><a href="javascript:void(0)">
+        <li><a ng-href="/projects/{{application}}/history">
             Historique
         </a></li>
     </ul>

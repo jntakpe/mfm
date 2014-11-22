@@ -26,7 +26,11 @@ menuApp.directive('sub', function SubMenu() {
             link: function (scope, element, attributes) {
                 scope.application = attributes.application;
                 element.bind('click', function () {
-                    scope.active.sub = scope.application;
+                    if (scope.active.sub === scope.application) {
+                        scope.active.sub = '';
+                    } else {
+                        scope.active.sub = scope.application;
+                    }
                 });
             },
             templateUrl: 'directives/sub-menu.html'

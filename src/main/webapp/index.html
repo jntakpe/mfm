@@ -55,31 +55,12 @@
                         <li ng-click="menu.changeMainMenu('services')"
                             ng-class="{active: menu.active.main === 'services'}">
                             <a href="javascript:void(0)"><i class="fa fa-exchange"></i>
-                                <span class="title"> Services</span></a>
+                                <span class="title"> Services</span>
+                            </a>
                             <ul class="sub-menu">
-                                <li ng-click="menu.activeSubMenu = 'eers'"
-                                    ng-class="{active: menu.activeSubMenu === 'eers'}">
-                                    <a href="javascript:void(0)">Entrée en relation</a>
-                                </li>
-                                <li ng-click="menu.activeSubMenu = 'ec'"
-                                    ng-class="{active: menu.activeSubMenu === 'ec'}">
-                                    <a href="javascript:void(0)">Espace client</a>
-                                    <ul class="sub-menu">
-                                        <li class="active"><a href="javascript:void(0)">
-                                            Dashboard
-                                        </a></li>
-                                        <li><a href="javascript:void(0)">
-                                            Métriques
-                                        </a></li>
-                                        <li><a href="javascript:void(0)">
-                                            Historique
-                                        </a></li>
-                                    </ul>
-                                </li>
-                                <li ng-click="menu.activeSubMenu = 'bss'"
-                                    ng-class="{active: menu.activeSubMenu === 'bss'}">
-                                    <a href="javascript:void(0)">BSS</a>
-                                </li>
+                                <sub application="eers" description="Entrée en relation" active="menu.active"></sub>
+                                <sub application="ec" description="Espace client" active="menu.active"></sub>
+                                <sub application="bss" description="BSS" active="menu.active"></sub>
                             </ul>
                         </li>
                         <li><a href="javascript:void(0)"><i class="fa fa-list-alt"></i><span class="title"> RIB </span></a>

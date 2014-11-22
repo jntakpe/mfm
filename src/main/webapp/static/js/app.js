@@ -2,7 +2,7 @@ var mfmApp = angular.module('mfmApp', ['menuApp', 'ngMessages', 'ngRoute', 'ngRe
 
 mfmApp.config(function ($routeProvider) {
     "use strict";
-    $routeProvider.when('/dashboard/:projectName', {
+    $routeProvider.when('/projects/:projectName/dashboard', {
         controller: 'DashboardCtrl',
         templateUrl: 'views/dashboard.html'
     }).otherwise({

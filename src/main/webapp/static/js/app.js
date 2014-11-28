@@ -1,4 +1,5 @@
-var mfmApp = angular.module('mfmApp', ['menuApp', 'ngMessages', 'ngRoute', 'ngResource', 'ui.bootstrap']);
+var menuApp = angular.module('menuApp', []),
+    mfmApp = angular.module('mfmApp', ['menuApp', 'ngMessages', 'ngRoute', 'ngResource', 'ui.bootstrap']);
 
 mfmApp.config(function ($routeProvider) {
     "use strict";

@@ -1,3 +1,7 @@
-/**
- * Created by jOSS on 28/11/14.
- */
+projectApp = angular.controller('ProjectCtrl', ProjectCtrl);
+
+function ProjectCtrl() {
+    this.submit = function () {
+
+    };
+}

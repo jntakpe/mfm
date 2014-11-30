@@ -1,6 +1,7 @@
 package com.github.jntakpe.mfm;
 
 import com.github.jntakpe.mfm.config.Constants;
+import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
 import org.apache.commons.lang3.SystemUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
  * @author jntakpe
  */
 @SpringBootApplication
+@EnableMetrics
 public class MfmConfig extends SpringBootServletInitializer {
 
     private static final Logger LOG = LoggerFactory.getLogger(MfmConfig.class);

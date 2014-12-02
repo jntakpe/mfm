@@ -9,7 +9,7 @@ import java.io.Serializable;
  *
  * @author jntakpe
  */
-public abstract class MongoEntity implements Serializable {
+public abstract class IdMongoEntity implements Serializable {
 
     @Id
     private String id;

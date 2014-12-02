@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author jntakpe
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Metrics extends MongoEntity {
+public class Metrics extends IdMongoEntity {
 
     private long mem;
 

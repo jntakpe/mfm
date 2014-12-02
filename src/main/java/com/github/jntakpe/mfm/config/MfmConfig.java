@@ -1,21 +1,26 @@
-package com.github.jntakpe.mfm;
+package com.github.jntakpe.mfm.config;
 
-import com.github.jntakpe.mfm.config.Constants;
 import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
 import org.apache.commons.lang3.SystemUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 /**
  * Classe de configuration principale de l'application
  *
  * @author jntakpe
  */
-@SpringBootApplication
+@Configuration
+@EnableAutoConfiguration
+@ComponentScan("com.github.jntakpe.mfm")
+@EnableMongoRepositories("com.github.jntakpe.mfm.repository")
 @EnableMetrics
 public class MfmConfig extends SpringBootServletInitializer {
 

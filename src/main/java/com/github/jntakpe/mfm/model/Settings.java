@@ -13,7 +13,7 @@ import java.util.Set;
  * @author jntakpe
  */
 @Document
-public class Settings extends MongoEntity {
+public class Settings extends IdMongoEntity {
 
     @NotNull
     private String name;
@@ -99,9 +99,12 @@ public class Settings extends MongoEntity {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("url", url)
                 .append("name", name)
+                .append("active", active)
+                .append("cluster", cluster)
+                .append("url", url)
+                .append("members", members)
+                .append("interval", interval)
                 .toString();
     }
-
 }

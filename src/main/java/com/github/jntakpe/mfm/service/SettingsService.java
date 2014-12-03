@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import java.util.Optional;
+
 /**
  * Services associés aux document {@link com.github.jntakpe.mfm.model.Settings}
  *
@@ -37,5 +39,16 @@ public class SettingsService {
         Settings updated = settingsRepository.save(settings);
         LOG.debug("Settings updated with values : {}", updated);
         return updated;
+    }
+
+    /**
+     * Récupère le paramétrage d'un projet en fonction du nom du projet
+     *
+     * @param name nom du projet
+     * @return paramétrage du projet
+     */
+    public Optional<Settings> findByName(String name) {
+        LOG.debug("Retrieving settings for project : {}", name);
+        return Optional.ofNullable(settingsRepository.findByName(name));
     }
 }

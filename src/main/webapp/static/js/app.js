@@ -1,20 +1,19 @@
 var menuApp = angular.module('menuApp', []),
     settingsApp = angular.module('settingsApp', []),
-    projectApp = angular.module('projectApp', []),
-    mfmApp = angular.module('mfmApp', ['menuApp', 'ngMessages', 'ngRoute', 'ngResource', 'ui.bootstrap']);
+    mfmApp = angular.module('mfmApp', ['menuApp', 'settingsApp', 'ngMessages', 'ngRoute', 'ngResource', 'ui.bootstrap']);
 
 mfmApp.config(function ($routeProvider) {
     "use strict";
     $routeProvider
         .when('/projects/:projectName/dashboard', {
-            controller: 'DashboardCtrl',
+            controller: 'DashboardCtrl as dashboard',
             templateUrl: 'views/dashboard.html'
         }).when('/settings', {
-            controller: 'SettingsCtrl',
+            controller: 'SettingsCtrl as settings',
             templateUrl: 'views/settings.html'
         })
         .otherwise({
-            controller: 'HomeCtrl',
+            controller: 'HomeCtrl as home',
             templateUrl: 'views/home.html'
         })
 });

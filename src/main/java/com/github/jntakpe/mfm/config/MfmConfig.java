@@ -18,10 +18,10 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  * @author jntakpe
  */
 @Configuration
+@EnableMetrics
 @EnableAutoConfiguration
 @ComponentScan("com.github.jntakpe.mfm")
 @EnableMongoRepositories("com.github.jntakpe.mfm.repository")
-@EnableMetrics
 public class MfmConfig extends SpringBootServletInitializer {
 
     private static final Logger LOG = LoggerFactory.getLogger(MfmConfig.class);

@@ -1,14 +1,19 @@
 <div class="tabbable">
     <ul class="nav nav-tabs simple">
-        <li class="active">
-            <a href="javascript:void(0)" ng-click="settings.currentProject('EERS')">Entrée en relation souscription</a>
+        <li ng-class="{active: settings.current.name === 'EERS'}">
+            <a href="javascript:void(0)" ng-click="settings.switchProject('EERS')">
+                Entrée en relation souscription</a>
         </li>
-        <li><a href="javascript:void(0)" ng-click="settings.currentProject('EC')">Espace client</a></li>
-        <li><a href="javascript:void(0)" ng-click="settings.currentProject('BSS')">BSS</a></li>
+        <li ng-class="{active: settings.current.name === 'EC'}">
+            <a href="javascript:void(0)" ng-click="settings.switchProject('EC')">Espace client</a>
+        </li>
+        <li ng-class="{active: settings.current.name === 'BSS'}">
+            <a href="javascript:void(0)" ng-click="settings.switchProject('BSS')">BSS</a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in">
-            <h1>Faire un virement</h1>
+            <h1>Paramétrage de {{settings.current.longName}}</h1>
 
             <form id="form" action="#" role="form" class="form-horizontal">
 
@@ -18,102 +23,35 @@
 
                         <div class="col-sm-6">
                             <label class="checkbox-block">
-                                <div>
-                                    <input icheck ng-model="settings.current.cluster" class="grey" type="checkbox">
-                                </div>
-                                Toto
+                                <input name="cluster" class="grey" type="checkbox" ng-model="settings.current.cluster"
+                                       icheck>
+
+                                <div class="m-help-button information" popover-trigger="mouseenter"
+                                     popover="Si l'application est deployée sur un cluster,
+                                          il est nécessaire d'indiquer toutes les IPs du cluster"></div>
                             </label>
                         </div>
-
-                        <!--<div class="col-sm-6">-->
-                        <!--<select style="display: none;" class="form-control selectBox">-->
-                        <!--<option value="">Virement immédiat</option>-->
-                        <!--<option value="">Virement permanent</option>-->
-                        <!--</select><a tabindex="0" title=""-->
-                        <!--style="width: 302px; display: inline-block; -moz-user-select: none;"-->
-                        <!--class="selectBox form-control selectBox-dropdown"><span style="width: 100%;"-->
-                        <!--class="selectBox-label">Virement immédiat</span><span-->
-                        <!--class="selectBox-arrow"></span></a>-->
-
-                        <!--<div data-original-title="" title="" data-content="Texte à définir" data-placement="top"-->
-                        <!--data-trigger="hover" data-rel="popover" data-container="body"-->
-                        <!--class="m-help-button information input-absolute popovers s-sm"></div>-->
-                        <!--</div>-->
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3">Périodicité</label>
+                        <label class="col-sm-3">URL de monitoring</label>
 
-                        <div class="col-sm-6">
-                            <select style="display: none;" class="form-control selectBox">
-                                <option value="">Mensuel</option>
-                            </select><a tabindex="0" title=""
-                                        style="width: 302px; display: inline-block; -moz-user-select: none;"
-                                        class="selectBox form-control selectBox-dropdown"><span style="width: 100%;"
-                                                                                                class="selectBox-label">Mensuel</span><span
-                                class="selectBox-arrow"></span></a>
+                        <div class="col-sm-8">
+                            <input name="url" placeholder="http://mon_serveur/app/manage" class="form-control"
+                                   type="url" ng-model="settings.current.url">
 
-                            <div data-original-title="" title="" data-content="Texte à définir" data-placement="top"
-                                 data-trigger="hover" data-rel="popover" data-container="body"
-                                 class="m-help-button information input-absolute popovers s-sm"></div>
                         </div>
+                        <div class="m-help-button information" popover-trigger="mouseenter"
+                             popover="URL pour accéder aux endpoints de monitoring. La dernière partie de l'URL
+                                 doit correspondre à la propriéré 'management.context-path' de Spring Boot"></div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-3">Montant</label>
-
-                        <div class="col-sm-4">
-                            <input name="" placeholder="" class="form-control" type="number">
-                        </div>
-                        <span class="input-inline hidden-sm hidden-xs">€ </span>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3">Premier virement</label>
-
-                        <div class="col-sm-4">
-                            <div class="input-group">
-                                <input name="" class="form-control date-picker" type="text"><span
-                                    class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            </div>
-                            <div data-original-title="" title="" data-content="Texte à définir" data-placement="top"
-                                 data-trigger="hover" data-rel="popover" data-container="body"
-                                 class="m-help-button information input-absolute popovers s-sm"></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3">Dernier virement</label>
-
-                        <div class="col-sm-4">
-                            <div class="input-group">
-                                <input name="" class="form-control date-picker" type="text"><span
-                                    class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3">Date</label>
-
-                        <div class="col-sm-4">
-                            <div class="input-group">
-                                <input name="" class="form-control date-picker" type="text"><span
-                                    class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3">Motif</label>
-
-                        <div class="col-sm-6">
-                            <input name="" placeholder="" class="form-control" type="text">
-
-                            <div data-original-title="" title="" data-content="Texte à définir" data-placement="top"
-                                 data-trigger="hover" data-rel="popover" data-container="body"
-                                 class="m-help-button information input-absolute popovers s-sm"></div>
-                        </div>
-                    </div>
+                    <div class="form-group"></div>
                 </div>
-                <button class="btn btn-grey btn-squared pull-left">Annuler</button>
-                <button class="btn btn-primary btn-squared pull-right">Continuer</button>
-                <div class="clearfix"></div>
             </form>
         </div>
+        <button class="btn btn-grey btn-squared pull-left">Annuler</button>
+        <button class="btn btn-primary btn-squared pull-right">Continuer</button>
+        <div class="clearfix"></div>
+        </form>
     </div>
+</div>
 </div>

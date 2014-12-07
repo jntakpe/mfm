@@ -1,10 +1,14 @@
-settingsApp.controller('SettingsCtrl', SettingsCtrl);
+settingsApp.controller('SettingsCtrl', ['settingsService', SettingsCtrl]);
 
-function SettingsCtrl() {
-
-    this.currentProject = function (name) {
-        console.log(name);
-    };
+function SettingsCtrl(settingsService) {
 
     this.current = {};
+
+    this.switchProject = function (name) {
+        this.current.name = name;
+        this.current.longName = settingsService.descName(name);
+    };
+
+    this.switchProject('EERS');
+
 }

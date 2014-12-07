@@ -2046,15 +2046,7 @@ tr.tr-section {
 .m-table-filter .m-table-filter-title .text {
   vertical-align: middle;
 }
-.m-table-filter .selectBox-dropdown {
-  height: 22px;
-  padding: 1px 12px;
-  font-size: 12px;
-}
-.m-table-filter .selectBox-options li a {
-  height: 22px;
-  padding: 1px 12px;
-}
+
 .m-table-filter .select-inline-container {
   margin: 0 5px;
 }

@@ -41,6 +41,7 @@ module.exports = function (grunt) {
                 src: [
                     '<%= dirs.bowerRes %>/jquery/dist/jquery.min.js',
                     '<%= dirs.bowerRes %>/bootstrap/dist/js/bootstrap.min.js',
+                    '<%= dirs.bowerRes %>/iCheck/icheck.min.js',
                     '<%= dirs.bowerRes %>/angular/angular.min.js',
                     '<%= dirs.bowerRes %>/angular-route/angular-route.min.js',
                     '<%= dirs.bowerRes %>/angular-messages/angular-messages.min.js',
@@ -72,6 +73,7 @@ module.exports = function (grunt) {
                     '<%= grunt.template.today("yyyy-mm-dd") %> */\n'
                 },
                 src: [
+                    '<%= dirs.bowerRes %>/iCheck/skins/minimal/grey.css',
                     '<%= dirs.target %>/css/theme/styles.css',
                     '<%= dirs.target %>/css/theme/styles-responsive.css',
                     '<%= dirs.target %>/css/theme/plugins.css',
@@ -85,12 +87,27 @@ module.exports = function (grunt) {
             fonts: {
                 files: [
                     {
-                        expand: true, flatten: true, src: [
-                        '<%= dirs.bowerRes %>/bootstrap/dist/fonts/*',
-                        '<%= dirs.bowerRes %>/font-awesome/fonts/*'
-                    ],
+                        expand: true,
+                        flatten: true,
+                        src: [
+                            '<%= dirs.bowerRes %>/bootstrap/dist/fonts/*',
+                            '<%= dirs.bowerRes %>/font-awesome/fonts/*'
+                        ],
                         dest: '<%= dirs.target %>/fonts',
                         filter: 'isFile'
+                    }
+                ]
+            },
+            img: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= dirs.bowerRes %>/iCheck/skins/minimal/',
+                        src: [
+                            'grey.png',
+                            'grey@2x.png'
+                        ],
+                        dest: '<%= dirs.target %>/css/'
                     }
                 ]
             }
@@ -105,5 +122,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 
     grunt.registerTask('default',
-        ['bower:install', 'concat:jsCore', 'concat:cssCore', 'concat:cssTheme', 'copy:fonts']);
+        ['bower:install', 'concat:jsCore', 'concat:cssCore', 'concat:cssTheme', 'copy:fonts', 'copy:img']);
 };

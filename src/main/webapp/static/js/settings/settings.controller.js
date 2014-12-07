@@ -5,4 +5,6 @@ function SettingsCtrl() {
     this.currentProject = function (name) {
         console.log(name);
     };
+
+    this.current = {};
 }

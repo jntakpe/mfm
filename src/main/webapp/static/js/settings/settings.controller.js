@@ -2,7 +2,11 @@ settingsApp.controller('SettingsCtrl', ['settingsService', SettingsCtrl]);
 
 function SettingsCtrl(settingsService) {
 
-    this.current = {};
+    var members = ['Toto', 'Tutu', 'Tata'];
+
+    this.current = {
+        members: members
+    };
 
     this.switchProject = function (name) {
         this.current.name = name;

@@ -12,6 +12,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
+import java.io.IOException;
+
 /**
  * Classe de configuration principale de l'application
  *
@@ -31,7 +33,7 @@ public class MfmConfig extends SpringBootServletInitializer {
      *
      * @param args arguments passés par le goal maven
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         LOG.debug("Démarrage de l'application en mode 'embedded'");
         new SpringApplication(MfmConfig.class).run(args);
     }

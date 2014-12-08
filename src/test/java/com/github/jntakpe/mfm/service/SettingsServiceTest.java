@@ -1,7 +1,9 @@
 package com.github.jntakpe.mfm.service;
 
 import com.github.jntakpe.mfm.config.MfmConfig;
+import com.github.jntakpe.mfm.model.Instance;
 import com.github.jntakpe.mfm.model.Settings;
+import com.github.jntakpe.mfm.repository.InstanceRepository;
 import com.github.jntakpe.mfm.repository.SettingsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -24,6 +26,9 @@ public class SettingsServiceTest extends AbstractTestNGSpringContextTests {
     private SettingsRepository settingsRepository;
 
     @Autowired
+    private InstanceRepository instanceRepository;
+
+    @Autowired
     private SettingsService settingsService;
 
     @BeforeClass
@@ -33,8 +38,6 @@ public class SettingsServiceTest extends AbstractTestNGSpringContextTests {
         Settings eersSettings = new Settings();
         eersSettings.setName(EERS);
         eersSettings.setActive(Boolean.TRUE);
-        eersSettings.setCluster(Boolean.TRUE);
-        eersSettings.setUrl("http://www.someurl.com");
         settingsRepository.save(eersSettings);
         assertThat(settingsRepository.count()).isNotZero();
     }
@@ -45,11 +48,12 @@ public class SettingsServiceTest extends AbstractTestNGSpringContextTests {
         Settings ecSettings = new Settings();
         ecSettings.setName(EC);
         ecSettings.setActive(Boolean.TRUE);
-        ecSettings.setCluster(Boolean.FALSE);
-        ecSettings.setUrl("http://www.ecurl.com");
+        Instance instance = instanceRepository.save(new Instance("someIP"));
+        ecSettings.getInstances().add(instance);
         Settings savedSettings = settingsService.save(ecSettings);
         assertThat(savedSettings).isNotNull();
         assertThat(settingsRepository.count()).isNotZero().isEqualTo(initSize + 1);
+        assertThat(savedSettings.getInstances()).isNotEmpty();
     }
 
     @Test

@@ -1,10 +1,11 @@
 package com.github.jntakpe.mfm.model;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.hibernate.validator.constraints.URL;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -22,15 +23,10 @@ public class Settings extends IdMongoEntity {
     private Boolean active;
 
     @NotNull
-    private Boolean cluster;
-
-    @URL
-    private String url;
-
-    private Set<String> members;
-
-    @NotNull
     private Integer interval;
+
+    @DBRef
+    private Set<Instance> instances = new HashSet<>();
 
     public String getName() {
         return name;
@@ -48,36 +44,20 @@ public class Settings extends IdMongoEntity {
         this.active = active;
     }
 
-    public Boolean getCluster() {
-        return cluster;
-    }
-
-    public void setCluster(Boolean cluster) {
-        this.cluster = cluster;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public Set<String> getMembers() {
-        return members;
-    }
-
-    public void setMembers(Set<String> members) {
-        this.members = members;
-    }
-
     public Integer getInterval() {
         return interval;
     }
 
     public void setInterval(Integer interval) {
         this.interval = interval;
+    }
+
+    public Set<Instance> getInstances() {
+        return instances;
+    }
+
+    public void setInstances(Set<Instance> instances) {
+        this.instances = instances;
     }
 
     @Override
@@ -87,8 +67,9 @@ public class Settings extends IdMongoEntity {
 
         Settings settings = (Settings) o;
 
-        return !(name != null ? !name.equals(settings.name) : settings.name != null);
+        if (name != null ? !name.equals(settings.name) : settings.name != null) return false;
 
+        return true;
     }
 
     @Override
@@ -101,9 +82,6 @@ public class Settings extends IdMongoEntity {
         return new ToStringBuilder(this)
                 .append("name", name)
                 .append("active", active)
-                .append("cluster", cluster)
-                .append("url", url)
-                .append("members", members)
                 .append("interval", interval)
                 .toString();
     }

@@ -1,4 +1,4 @@
-/*! mfm - v0.0.1 - Theme CSS - 2014-12-07 */
+/*! mfm - v0.0.1 - Theme CSS - 2014-12-08 */
 .icheckbox_minimal-grey,
 .iradio_minimal-grey {
   display: inline-block;
@@ -2068,15 +2068,7 @@ tr.tr-section {
 .m-table-filter .m-table-filter-title .text {
   vertical-align: middle;
 }
-.m-table-filter .selectBox-dropdown {
-  height: 22px;
-  padding: 1px 12px;
-  font-size: 12px;
-}
-.m-table-filter .selectBox-options li a {
-  height: 22px;
-  padding: 1px 12px;
-}
+
 .m-table-filter .select-inline-container {
   margin: 0 5px;
 }
@@ -8941,157 +8933,6 @@ div.tagsinput input {
 }
 
 /* PLUGIN INCOMING */
-/* Dropdown control */
-.selectBox-dropdown {
-  position: relative;
-  text-decoration: none;
-  text-align: left;
-  outline: none;
-  vertical-align: middle;
-  display: inline-block;
-  cursor: default;
-  color: #333;
-  background-color: #FFFFFF;
-  border: 1px solid #E6E8E8;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  height: 32px;
-  padding: 5px 12px;
-  width: 100% !important;
-  color: #333333 !important;
-  font-family: inherit;
-  font-size: 12px;
-  line-height: 1.2;
-  transition-duration: 0.1s;
-  box-shadow: none !important;
-  -webkit-transition: 300ms ease-in-out;
-  -moz-transition: 300ms ease-in-out;
-  -ms-transition: 300ms ease-in-out;
-  -o-transition: 300ms ease-in-out;
-  transition: 300ms ease-in-out;
-}
-
-.selectBox-dropdown:focus,
-.selectBox-dropdown:focus .selectBox-arrow {
-  border-color: #E6E8E8;
-  color: #333;
-}
-
-.selectBox-dropdown .selectBox-label {
-  padding: 2px 0;
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.selectBox-dropdown .selectBox-arrow {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 23px;
-  height: 100%;
-  background: #FFF url(./../../assets/images/selectBox-arrow.gif) 50% center no-repeat;
-}
-
-/* Dropdown menu */
-.selectBox-dropdown-menu {
-  position: absolute;
-  z-index: 99999;
-  max-height: 200px;
-  min-height: 1em;
-  border: solid 1px #E6E8E8;
-  /* should be the same border width as .selectBox-dropdown */
-  background: #FFF;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Inline control */
-.selectBox-inline {
-  min-width: 150px;
-  outline: none;
-  border: solid 1px #BBB;
-  background: #FFF;
-  display: inline-block;
-  overflow: auto;
-}
-
-.selectBox-inline:focus {
-  border-color: #666;
-}
-
-/* Options */
-.selectBox-options,
-.selectBox-options LI,
-.selectBox-options LI A {
-  list-style: none;
-  display: block;
-  cursor: default;
-  padding: 0;
-  margin: 0;
-}
-
-.selectBox-options LI A {
-  font-size: 12px;
-  color: #333;
-  padding: 5px 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  background: 6px center no-repeat;
-  cursor: pointer;
-}
-
-.selectBox-options LI.selectBox-hover A {
-  background-color: #EEE;
-}
-
-.selectBox-options LI.selectBox-disabled A {
-  color: #888;
-  background-color: transparent;
-}
-
-.selectBox-options LI.selectBox-selected A {
-  background-color: #E3E3E3;
-}
-
-.selectBox-options .selectBox-optgroup {
-  color: #666;
-  background: #EEE;
-  font-weight: bold;
-  line-height: 1.5;
-  padding: 0 .3em;
-  white-space: nowrap;
-}
-
-/* Disabled state */
-.selectBox.selectBox-disabled {
-  color: #888 !important;
-}
-
-.selectBox-dropdown.selectBox-disabled .selectBox-arrow {
-  opacity: .5;
-  filter: alpha(opacity=50);
-  border-color: #666;
-}
-
-.selectBox-inline.selectBox-disabled {
-  color: #888 !important;
-}
-
-.selectBox-inline.selectBox-disabled .selectBox-options A {
-  background-color: transparent !important;
-}
-
-/* Small */
-.s-sm-selectBox-dropdown-menu li a {
-  font-size: 12px;
-  padding: 1px 12px;
-}
-
 /* ---------------------------------------------------------------------- */
 /*  OWL CAROUSEL
 /* ---------------------------------------------------------------------- */
@@ -9927,7 +9768,6 @@ div.tagsinput input {
   right: -20px;
 }
 .m-help-button.input-absolute.s-sm {
-  /*margin-top: 3px;*/
   right: -12px;
 }
 .m-help-button.input-absolute-checkbox-list {

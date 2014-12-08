@@ -19,6 +19,27 @@
 
                 <div class="content-group content-boxed">
                     <div class="form-group">
+                        <label class="col-sm-3">Intervale</label>
+
+                        <div class="col-sm-6">
+                            <select class="form-control" ng-model="settings.interval">
+                                <option value="">Veuillez sélectionner un intervalle</option>
+                                <option value="1">1 seconde</option>
+                                <option value="5">5 secondes</option>
+                                <option value="10">10 secondes</option>
+                                <option value="30">30 secondes</option>
+                                <option value="60">1 minute</option>
+                                <option value="600">10 minutes</option>
+                                <option value="1800">30 minutes</option>
+                                <option value="3600">1 heure</option>
+                            </select>
+
+                            <div class="m-help-button information input-absolute" popover-trigger="mouseenter"
+                                 popover="Intervalle entre chaque récupération des métriques">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-3">Cluster</label>
 
                         <div class="col-sm-6">
@@ -32,19 +53,41 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-hide="settings.current.cluster">
                         <label class="col-sm-3">URL de monitoring</label>
 
-                        <div class="col-sm-8">
+                        <div class="col-sm-6">
                             <input name="url" placeholder="http://mon_serveur/app/manage" class="form-control"
                                    type="url" ng-model="settings.current.url">
 
-                        </div>
-                        <div class="m-help-button information" popover-trigger="mouseenter"
-                             popover="URL pour accéder aux endpoints de monitoring. La dernière partie de l'URL
+                            <div class="m-help-button information input-absolute" popover-trigger="mouseenter"
+                                 popover="URL pour accéder aux endpoints de monitoring. La dernière partie de l'URL
                                  doit correspondre à la propriéré 'management.context-path' de Spring Boot"></div>
+                        </div>
                     </div>
-                    <div class="form-group"></div>
+                    <div ng-show="settings.current.cluster">
+                        <div class="form-group">
+                            <label class="col-sm-3">Ajout d'une IP de monitoring</label>
+
+                            <div class="col-sm-6">
+                                <input placeholder="http://mon_ip/app/manage" class="form-control" type="url"/>
+
+                                <div class="m-help-button information input-absolute" popover-trigger="mouseenter"
+                                     popover="URL pour accéder aux endpoints de monitoring. La dernière partie de l'URL
+                                 doit correspondre à la propriéré 'management.context-path' de Spring Boot"></div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-repeat="(i, member) in settings.current.members track by $index">
+                            <label class="col-sm-offset-1 col-sm-2">IP {{i + 1}}</label>
+
+                            <div class="col-sm-offset-1 col-sm-6">
+                                <input placeholder="IP de monitoring du membre n°{{i + 1}}" class="form-control"
+                                       type="url" ng-model="settings.current.members[i]">
+
+                                <div class="m-help-button "
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>

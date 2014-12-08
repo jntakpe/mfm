@@ -1,5 +1,6 @@
 package com.github.jntakpe.mfm.model;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
@@ -12,13 +13,13 @@ import java.io.Serializable;
 public abstract class IdMongoEntity implements Serializable {
 
     @Id
-    private String id;
+    private ObjectId id;
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 }

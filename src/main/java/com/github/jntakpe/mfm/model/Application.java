@@ -14,7 +14,7 @@ import java.util.Set;
  * @author jntakpe
  */
 @Document
-public class Settings extends IdMongoEntity {
+public class Application extends IdMongoEntity {
 
     @NotNull
     private String name;
@@ -65,9 +65,9 @@ public class Settings extends IdMongoEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Settings settings = (Settings) o;
+        Application application = (Application) o;
 
-        if (name != null ? !name.equals(settings.name) : settings.name != null) return false;
+        if (name != null ? !name.equals(application.name) : application.name != null) return false;
 
         return true;
     }

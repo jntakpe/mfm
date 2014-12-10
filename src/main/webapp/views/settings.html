@@ -71,16 +71,21 @@
                             <tr>
                                 <th>Numéro</th>
                                 <th>URL de monitoring</th>
-                                <th>Action</th>
-                                <th>Supprimer</th>
+                                <th class="col-sm-1">Statut</th>
+                                <th class="col-sm-1">Supprimer</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="(i, instance) in settings.app.instances track by $index">
                                 <td>Instance n° {{i}}</td>
-                                <td><input type="text" ng-model="instance"/></td>
-                                <td>Some action</td>
-                                <td>btn del</td>
+                                <td><input type="text" ng-model="instance.url"/></td>
+                                <td class="center">
+                                    <i ng-class="settings.statusIcon(instance.status)"></i>
+                                </td>
+                                <td class="center">
+                                    <button class="btn btn-danger btn-squared btn-sm">
+                                        <i class="fa fa-trash"></i></button>
+                                </td>
                             </tr>
                             </tbody>
                         </table>

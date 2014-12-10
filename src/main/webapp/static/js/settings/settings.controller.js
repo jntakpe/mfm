@@ -3,7 +3,7 @@ settingsApp.controller('SettingsCtrl', ['settingsService', SettingsCtrl]);
 function SettingsCtrl(settingsService) {
 
     this.app = {
-        instances: ['Toto', 'Tutu', 'Tata']
+        instances: [{url: 'toto', status: 'haha'}]
     };
 
     this.switchProject = function (name) {
@@ -12,10 +12,23 @@ function SettingsCtrl(settingsService) {
     };
 
     this.addInstance = function () {
-        this.app.instances.push(this.app.toAddInstance);
+        var instance = {
+            url: this.app.toAddInstance
+        };
+        settingsService.checkUrl('ec', 'http://www.google.fr')
+            .success(function () {
+                instance.status = true;
+            }).error(function () {
+                instance.status = false;
+            });
+        this.app.instances.push(instance);
         this.app.toAddInstance = '';
     };
-    
+
+    this.statusIcon = function (status) {
+        return settingsService.statusIcon(status);
+    };
+
     this.switchProject('EERS');
 
 }

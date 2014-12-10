@@ -2,17 +2,20 @@ settingsApp.controller('SettingsCtrl', ['settingsService', SettingsCtrl]);
 
 function SettingsCtrl(settingsService) {
 
-    var members = ['Toto', 'Tutu', 'Tata'];
-
-    this.current = {
-        members: members
+    this.app = {
+        instances: ['Toto', 'Tutu', 'Tata']
     };
 
     this.switchProject = function (name) {
-        this.current.name = name;
-        this.current.longName = settingsService.descName(name);
+        this.app.name = name;
+        this.app.longName = settingsService.descName(name);
     };
 
+    this.addInstance = function () {
+        this.app.instances.push(this.app.toAddInstance);
+        this.app.toAddInstance = '';
+    };
+    
     this.switchProject('EERS');
 
 }

@@ -1,7 +1,6 @@
 package com.github.jntakpe.mfm.model;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
@@ -25,7 +24,6 @@ public class Application extends IdMongoEntity {
     @NotNull
     private Integer interval;
 
-    @DBRef
     private Set<Instance> instances = new HashSet<>();
 
     public String getName() {

@@ -1,7 +1,6 @@
 package com.github.jntakpe.mfm.model;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 
@@ -10,8 +9,7 @@ import javax.validation.constraints.NotNull;
  *
  * @author jntakpe
  */
-@Document
-public class Instance extends IdMongoEntity {
+public class Instance {
 
     @NotNull
     private String ip;

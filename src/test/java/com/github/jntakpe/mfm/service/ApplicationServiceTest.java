@@ -4,7 +4,6 @@ import com.github.jntakpe.mfm.config.MfmConfig;
 import com.github.jntakpe.mfm.model.Application;
 import com.github.jntakpe.mfm.model.Instance;
 import com.github.jntakpe.mfm.repository.ApplicationRepository;
-import com.github.jntakpe.mfm.repository.InstanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -26,9 +25,6 @@ public class ApplicationServiceTest extends AbstractTestNGSpringContextTests {
     private ApplicationRepository applicationRepository;
 
     @Autowired
-    private InstanceRepository instanceRepository;
-
-    @Autowired
     private ApplicationService applicationService;
 
     @BeforeClass
@@ -48,8 +44,7 @@ public class ApplicationServiceTest extends AbstractTestNGSpringContextTests {
         Application ec = new Application();
         ec.setName(EC);
         ec.setActive(Boolean.TRUE);
-        Instance instance = instanceRepository.save(new Instance("someIP"));
-        ec.getInstances().add(instance);
+        ec.getInstances().add(new Instance("ECInstance"));
         Application savedEc = applicationService.save(ec);
         assertThat(savedEc).isNotNull();
         assertThat(applicationRepository.count()).isNotZero().isEqualTo(initSize + 1);

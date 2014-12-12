@@ -2,33 +2,63 @@ settingsApp.controller('SettingsCtrl', ['settingsService', SettingsCtrl]);
 
 function SettingsCtrl(settingsService) {
 
-    this.app = {
-        instances: [{url: 'toto', status: 'haha'}]
-    };
+    var vm = this;
 
-    this.switchProject = function (name) {
-        this.app.name = name;
-        this.app.longName = settingsService.descName(name);
-    };
-
-    this.addInstance = function () {
-        var instance = {
-            url: this.app.toAddInstance
-        };
-        settingsService.checkUrl('ec', 'http://www.google.fr')
+    function updateInstance(instance) {
+        settingsService.checkUrl(instance.url)
             .success(function () {
                 instance.status = true;
             }).error(function () {
                 instance.status = false;
             });
-        this.app.instances.push(instance);
-        this.app.toAddInstance = '';
+    }
+
+    vm.app = {
+        instances: [{url: 'toto', status: 'haha'}]
     };
 
-    this.statusIcon = function (status) {
+    vm.switchProject = function (name) {
+        vm.app.name = name;
+        vm.app.longName = settingsService.descName(name);
+    };
+
+    vm.addInstance = function () {
+        var instance = {
+            url: vm.app.toAddInstance
+        };
+        if (instance.url) {
+            updateInstance(instance);
+            vm.app.instances.push(instance);
+            vm.app.toAddInstance = '';
+        }
+    };
+
+    vm.update = function (instance) {
+        updateInstance(instance);
+    };
+
+    vm.statusIcon = function (status) {
         return settingsService.statusIcon(status);
     };
 
-    this.switchProject('EERS');
+    vm.statusBtn = function (status) {
+        return settingsService.statusBtn(status);
+    };
+
+    vm.remove = function (i) {
+        vm.app.instances.splice(i, 1);
+    };
+
+    vm.save = function () {
+        settingsService.resource.save(vm.app,
+            function (data) {
+                vm.app = data;
+            },
+            function () {
+                //Some alert !!!!
+            });
+    };
+
+    vm.switchProject('EERS');
 
 }

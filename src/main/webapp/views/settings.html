@@ -39,39 +39,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-3">Cluster</label>
-
-                        <div class="col-sm-6">
-                            <label class="checkbox-block">
-                                <input name="cluster" class="grey" type="checkbox" ng-model="settings.app.cluster"
-                                       icheck>
-
-                                <div class="m-help-button information" popover-trigger="mouseenter"
-                                     popover="Si l'application est deployée sur un cluster,
-                                          il est nécessaire d'indiquer toutes les IPs du cluster"></div>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group" ng-hide="settings.app.cluster">
-                        <label class="col-sm-3">URL de monitoring</label>
-
-                        <div class="col-sm-6">
-                            <input name="url" placeholder="http://mon_serveur/app/manage" class="form-control"
-                                   type="url" ng-model="settings.app.url">
-
-                            <div class="m-help-button information input-absolute" popover-trigger="mouseenter"
-                                 popover="URL pour accéder aux endpoints de monitoring. La dernière partie de l'URL
-                                 doit correspondre à la propriéré 'management.context-path' de Spring Boot"></div>
-                        </div>
-                    </div>
-                    <div ng-show="settings.app.cluster">
-                        <table class="table table-bordered">
+                    <div>
+                        <table class="table table-bordered" ng-show="settings.app.instances.length">
                             <thead>
                             <tr>
-                                <th>Numéro</th>
+                                <th class="col-sm-2">Instance</th>
                                 <th>URL de monitoring</th>
-                                <th class="col-sm-1">Statut</th>
+                                <th class="col-sm-1">Test</th>
                                 <th class="col-sm-1">Supprimer</th>
                             </tr>
                             </thead>
@@ -80,17 +54,22 @@
                                 <td>Instance n° {{i}}</td>
                                 <td><input type="text" ng-model="instance.url"/></td>
                                 <td class="center">
-                                    <i ng-class="settings.statusIcon(instance.status)"></i>
+                                    <button type="button" ng-class="settings.statusBtn(instance.status)"
+                                            ng-click="settings.update(instance)">
+                                        <i ng-class="settings.statusIcon(instance.status)"></i>
+                                    </button>
                                 </td>
                                 <td class="center">
-                                    <button class="btn btn-danger btn-squared btn-sm">
-                                        <i class="fa fa-trash"></i></button>
+                                    <button type="button" class="btn btn-warning btn-sm" ng-click="settings.remove(i)">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
 
                         <div class="form-group">
+                            <label class="col-sm-3">Nouvelle instance</label>
 
                             <div class="col-sm-6">
                                 <input placeholder="http://mon_ip/app/manage" class="form-control" type="text"
@@ -100,11 +79,10 @@
                                      popover="URL pour accéder aux endpoints de monitoring. La dernière partie de l'URL
                                  doit correspondre à la propriéré 'management.context-path' de Spring Boot"></div>
                             </div>
-                            <div class="col-sm-4 pull-right">
+                            <div class="pull-right">
                                 <button type="button" class="btn btn-squared btn-primary"
                                         ng-click="settings.addInstance()">
-                                    <i class="fa fa-plus"></i>
-                                    Ajout d'une instance
+                                    <i class="fa fa-plus"></i> Ajouter
                                 </button>
                             </div>
                         </div>
@@ -112,10 +90,10 @@
                 </div>
             </form>
         </div>
-        <button class="btn btn-grey btn-squared pull-left">Annuler</button>
-        <button class="btn btn-primary btn-squared pull-right">Continuer</button>
+        <button class="btn btn-grey btn-squared pull-left"><i class="fa fa-times"></i> Annuler</button>
+        <button class="btn btn-primary btn-squared pull-right" ng-click="settings.save()">
+            <i class="fa fa-save"></i> Enregistrer
+        </button>
         <div class="clearfix"></div>
-        </form>
     </div>
-</div>
 </div>

@@ -12,24 +12,35 @@ settingsApp.factory('settingsService', ['$resource', '$http', function ($resourc
         }
     }
 
-    function checkUrl(name, url) {
-        return $http.get('/settings/' + name + '/check', {params: {url: url}})
+    function checkUrl(url) {
+        return $http.get('/settings/check', {params: {url: url + '/info'}})
     }
 
     function statusIcon(status) {
         var prefix = 'fa fa-lg fa-', icon = 'spinner fa-spin';
         if (status === true) {
-            icon = 'check text-success';
+            icon = 'check';
         } else if (status === false) {
-            icon = 'times text-danger';
+            icon = 'times';
         }
         return prefix + icon;
     }
 
+    function statusBtn(status) {
+        var prefix = 'btn btn-sm btn-', btn = 'grey';
+        if (status === true) {
+            btn = 'success';
+        } else if (status === false) {
+            btn = 'danger';
+        }
+        return prefix + btn;
+    }
+
     return {
+        resource: $resource('/settings/:name', {name: '@id'}),
         descName: resolveDescName,
         checkUrl: checkUrl,
-        resource: $resource('/settings/:name', {name: '@id'}),
-        statusIcon: statusIcon
+        statusIcon: statusIcon,
+        statusBtn: statusBtn
     };
 }]);

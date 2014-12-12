@@ -1,13 +1,15 @@
 package com.github.jntakpe.mfm.web;
 
+import com.github.jntakpe.mfm.model.Application;
+import com.github.jntakpe.mfm.model.Info;
 import com.github.jntakpe.mfm.service.ApplicationService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
+import java.util.Optional;
 
 /**
  * Ressource gérant les paramètres des différents projets
@@ -18,8 +20,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/settings")
 public class SettingsResource {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SettingsResource.class);
-
     private ApplicationService applicationService;
 
     @Autowired
@@ -27,11 +27,17 @@ public class SettingsResource {
         this.applicationService = applicationService;
     }
 
-    @RequestMapping(value = "/{appName}/check", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> checkUrl(@PathVariable String appName, @RequestParam String url) throws InterruptedException {
-        LOG.debug("Checking URL {} for application {}", url, appName);
-        Thread.sleep(2000);
+    @RequestMapping(value = "/check", method = RequestMethod.GET)
+    public ResponseEntity<Info> check(@RequestParam URI url) throws InterruptedException {
+        return applicationService.check(url);
+    }
 
-        return new ResponseEntity<>(HttpStatus.OK);
+    @RequestMapping(value = "/{appName}", method = RequestMethod.GET)
+    public ResponseEntity<Application> application(@PathVariable String appName) {
+        Optional<Application> application = applicationService.findByName(appName);
+        if (application.isPresent()) {
+            return new ResponseEntity<>(application.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.util.Assert;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -70,6 +71,13 @@ public class ApplicationService {
         return restTemplate.getForEntity(url, Info.class);
     }
 
-
-
+    /**
+     * Récupère la liste de toutes les applications
+     *
+     * @return liste des applications
+     */
+    public List<Application> findAll() {
+        LOG.debug("Getting all applications settings");
+        return applicationRepository.findAll();
+    }
 }

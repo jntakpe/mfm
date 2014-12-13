@@ -13,12 +13,13 @@ function SettingsCtrl(settingsService) {
             });
     }
 
-    vm.app = {
-        instances: [{url: 'toto', status: 'haha'}]
-    };
+    settingsService.resource.query(function (data) {
+        vm.apps = data;
+        vm.switchProject('EERS');
+    });
 
     vm.switchProject = function (name) {
-        vm.app.name = name;
+        vm.app = settingsService.findByName(name, vm.apps);
         vm.app.longName = settingsService.descName(name);
     };
 
@@ -58,7 +59,5 @@ function SettingsCtrl(settingsService) {
                 //Some alert !!!!
             });
     };
-
-    vm.switchProject('EERS');
 
 }

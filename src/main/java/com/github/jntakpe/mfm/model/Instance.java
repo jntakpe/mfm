@@ -12,18 +12,21 @@ import javax.validation.constraints.NotNull;
 public class Instance {
 
     @NotNull
-    private String ip;
+    private String url;
 
-    public Instance(String ip) {
-        this.ip = ip;
+    public Instance() {
     }
 
-    public String getIp() {
-        return ip;
+    public Instance(String url) {
+        this.url = url;
     }
 
-    public void setIp(String ip) {
-        this.ip = ip;
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override
@@ -33,20 +36,20 @@ public class Instance {
 
         Instance instance = (Instance) o;
 
-        if (ip != null ? !ip.equals(instance.ip) : instance.ip != null) return false;
+        if (url != null ? !url.equals(instance.url) : instance.url != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return ip != null ? ip.hashCode() : 0;
+        return url != null ? url.hashCode() : 0;
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("ip", ip)
+                .append("url", url)
                 .toString();
     }
 }

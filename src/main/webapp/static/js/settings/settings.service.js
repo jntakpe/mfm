@@ -36,11 +36,22 @@ settingsApp.factory('settingsService', ['$resource', '$http', function ($resourc
         return prefix + btn;
     }
 
+    function findByName(name, apps) {
+        var app;
+        for (app in apps) {
+            if (apps.hasOwnProperty(app) && apps[app].name === name) {
+                return apps[app];
+            }
+        }
+        return {name: name, instances: []};
+    }
+
     return {
-        resource: $resource('/settings/:name', {name: '@id'}),
+        resource: $resource('/settings'),
         descName: resolveDescName,
         checkUrl: checkUrl,
         statusIcon: statusIcon,
-        statusBtn: statusBtn
+        statusBtn: statusBtn,
+        findByName: findByName
     };
 }]);

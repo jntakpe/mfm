@@ -15,14 +15,14 @@
         <div class="tab-pane fade active in">
             <h1>Paramétrage de {{settings.app.longName}}</h1>
 
-            <form id="form" action="#" role="form" class="form-horizontal">
+            <form id="form" action="#" role="form" name="form" class="form-horizontal">
 
                 <div class="content-group content-boxed">
                     <div class="form-group">
                         <label class="col-sm-3">Intervale</label>
 
                         <div class="col-sm-6">
-                            <select class="form-control" ng-model="settings.app.interval">
+                            <select class="form-control" name="interval" ng-model="settings.app.interval" required>
                                 <option value="1">1 seconde</option>
                                 <option value="5">5 secondes</option>
                                 <option value="10">10 secondes</option>
@@ -36,6 +36,23 @@
                             <div class="m-help-button information input-absolute" popover-trigger="mouseenter"
                                  popover="Intervalle entre chaque récupération des métriques">
                             </div>
+                            <div class="help-block error" ng-messages="form.interval.$error"
+                                 ng-if="form.interval.$touched || form.$submitted">
+                                <span ng-message="required">Veuillez sélectionner un intervale de mise à jour</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3">Active</label>
+
+                        <div class="col-sm-6">
+                            <label class="checkbox-block">
+                                <input name="active" class="grey" type="checkbox" ng-model="settings.app.active"
+                                       icheck>
+
+                                <div class="m-help-button information" popover-trigger="mouseenter"
+                                     popover="Indique si le monitoring de l'instance est actif"></div>
+                            </label>
                         </div>
                     </div>
                     <div>
@@ -89,8 +106,8 @@
                 </div>
             </form>
         </div>
-        <button class="btn btn-grey btn-squared pull-left"><i class="fa fa-times"></i> Annuler</button>
-        <button class="btn btn-primary btn-squared pull-right" ng-click="settings.save()">
+        <a ng-href="/" class="btn btn-grey btn-squared pull-left"><i class="fa fa-reply"></i> Retour</a>
+        <button type="submit" class="btn btn-primary btn-squared pull-right" ng-submit="settings.submit()">
             <i class="fa fa-save"></i> Enregistrer
         </button>
         <div class="clearfix"></div>

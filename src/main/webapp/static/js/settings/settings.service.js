@@ -16,6 +16,16 @@ settingsApp.factory('settingsService', ['$resource', '$http', function ($resourc
         return $http.get('/settings/check', {params: {url: url + '/info'}})
     }
 
+    function updateInstance(instance) {
+        checkUrl(instance.url)
+            .success(function () {
+                instance.status = true;
+            }).error(function () {
+                instance.status = false;
+            });
+    }
+
+
     function statusIcon(status) {
         var prefix = 'fa fa-lg fa-', icon = 'spinner fa-spin';
         if (status === true) {
@@ -36,22 +46,21 @@ settingsApp.factory('settingsService', ['$resource', '$http', function ($resourc
         return prefix + btn;
     }
 
-    function findByName(name, apps) {
-        var app;
-        for (app in apps) {
-            if (apps.hasOwnProperty(app) && apps[app].name === name) {
-                return apps[app];
+    function init(app) {
+        var instance, instances = app.instances;
+        app.longName = resolveDescName(app.name);
+        for (instance in instances) {
+            if (instances.hasOwnProperty(instance)) {
+                updateInstance(instances[instance]);
             }
         }
-        return {name: name, instances: []};
     }
 
     return {
-        resource: $resource('/settings'),
-        descName: resolveDescName,
-        checkUrl: checkUrl,
+        resource: $resource('/settings/:name', {name: '@name'}),
+        updateInstance: updateInstance,
         statusIcon: statusIcon,
         statusBtn: statusBtn,
-        findByName: findByName
+        initApp: init
     };
 }]);

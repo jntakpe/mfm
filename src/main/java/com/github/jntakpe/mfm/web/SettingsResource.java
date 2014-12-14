@@ -31,6 +31,12 @@ public class SettingsResource {
         this.applicationService = applicationService;
     }
 
+    /**
+     * Renvoie les paramètres de l'application correspondant au nom
+     *
+     * @param name nom de l'application recherchée
+     * @return les paramètres de l'application et sinon une erreur 404
+     */
     @RequestMapping(value = "/{name}", method = RequestMethod.GET)
     public ResponseEntity<Application> get(@PathVariable String name) {
         Optional<Application> app = applicationService.findByName(name);
@@ -42,13 +48,26 @@ public class SettingsResource {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Enregistre les paramètres d'une application et renvoie l'application enregistrée
+     *
+     * @param name        nom de l'application (inutilisé)
+     * @param application paramètres à enregistrer
+     * @return les paramètres enregistrés
+     */
     @RequestMapping(value = "/{name}", method = RequestMethod.POST)
     public Application save(@PathVariable String name, @RequestBody Application application) {
         return applicationService.save(application);
     }
 
+    /**
+     * Vérifie que l'URL de monitoring est disponnible
+     *
+     * @param url url de monitoring à tester
+     * @return les informations sur le projet correspondant à l'URL de monitoring ou l'erreur lancée lors du test
+     */
     @RequestMapping(value = "/check", method = RequestMethod.GET)
-    public ResponseEntity<Info> check(@RequestParam URI url) throws InterruptedException {
+    public ResponseEntity<Info> check(@RequestParam URI url) {
         return applicationService.check(url);
     }
 }

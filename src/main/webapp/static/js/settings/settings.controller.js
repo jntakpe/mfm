@@ -1,6 +1,6 @@
-settingsApp.controller('SettingsCtrl', ['settingsService', SettingsCtrl]);
+settingsApp.controller('SettingsCtrl', ['settingsService', '$timeout', SettingsCtrl]);
 
-function SettingsCtrl(settingsService) {
+function SettingsCtrl(settingsService, $timeout) {
 
     var vm = this;
 
@@ -45,8 +45,20 @@ function SettingsCtrl(settingsService) {
     vm.submit = function () {
         vm.app.$save(function (app) {
             settingsService.initApp(app);
+            vm.alert = {
+                message: 'Enregistrement avec succès des paramètres du projet ' + app.name,
+                type: 'success'
+            };
+        }, function () {
+            vm.alert = {
+                message: 'Erreur lors de l\'enregistrement des paramètres',
+                type: 'danger'
+            }
         });
     };
 
     vm.switchProject('EERS');
+
+    vm.alert = {};
+
 }

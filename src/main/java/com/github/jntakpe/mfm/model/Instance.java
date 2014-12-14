@@ -14,6 +14,8 @@ public class Instance {
     @NotNull
     private String url;
 
+    private Info info;
+
     public Instance() {
     }
 
@@ -27,6 +29,14 @@ public class Instance {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Info getInfo() {
+        return info;
+    }
+
+    public void setInfo(Info info) {
+        this.info = info;
     }
 
     @Override

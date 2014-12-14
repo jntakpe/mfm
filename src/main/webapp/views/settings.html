@@ -13,13 +13,19 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane fade active in">
+
+            <alert ng-if="settings.alert.type" type="{{settings.alert.type}}" close="closeAlert()">
+                <i class="fa" ng-class="settings.alert.type === 'success' ? 'fa-check':'fa-warning'"></i>
+                &nbsp;{{settings.alert.message}}
+            </alert>
+
             <h1>Paramétrage de {{settings.app.longName}}</h1>
 
             <form id="form" action="#" role="form" name="form" class="form-horizontal">
 
                 <div class="content-group content-boxed">
                     <div class="form-group">
-                        <label class="col-sm-3">Intervale</label>
+                        <label class="col-sm-3">Intervalle</label>
 
                         <div class="col-sm-6">
                             <select class="form-control" name="interval" ng-model="settings.app.interval" required>
@@ -37,8 +43,8 @@
                                  popover="Intervalle entre chaque récupération des métriques">
                             </div>
                             <div class="help-block error" ng-messages="form.interval.$error"
-                                 ng-if="form.interval.$touched || form.$submitted">
-                                <span ng-message="required">Veuillez sélectionner un intervale de mise à jour</span>
+                                 ng-if="form.interval.$touched">
+                                <span ng-message="required">Veuillez sélectionner un intervalle</span>
                             </div>
                         </div>
                     </div>
@@ -107,7 +113,8 @@
             </form>
         </div>
         <a ng-href="/" class="btn btn-grey btn-squared pull-left"><i class="fa fa-reply"></i> Retour</a>
-        <button type="submit" class="btn btn-primary btn-squared pull-right" ng-submit="settings.submit()">
+        <button type="submit" class="btn btn-primary btn-squared pull-right" ng-click="settings.submit()"
+                ng-disabled="form.$invalid">
             <i class="fa fa-save"></i> Enregistrer
         </button>
         <div class="clearfix"></div>

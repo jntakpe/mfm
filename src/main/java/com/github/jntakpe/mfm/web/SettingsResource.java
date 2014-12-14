@@ -3,6 +3,7 @@ package com.github.jntakpe.mfm.web;
 import com.github.jntakpe.mfm.model.Application;
 import com.github.jntakpe.mfm.model.Info;
 import com.github.jntakpe.mfm.service.ApplicationService;
+import com.github.jntakpe.mfm.service.InstanceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,12 @@ public class SettingsResource {
 
     private ApplicationService applicationService;
 
+    private InstanceService instanceService;
+
     @Autowired
-    public SettingsResource(ApplicationService applicationService) {
+    public SettingsResource(ApplicationService applicationService, InstanceService instanceService) {
         this.applicationService = applicationService;
+        this.instanceService = instanceService;
     }
 
     /**
@@ -61,13 +65,13 @@ public class SettingsResource {
     }
 
     /**
-     * Vérifie que l'URL de monitoring est disponnible
+     * Vérifie que l'URL de monitoring est disponnible en essayant de récupérer les informations relatives à l'instance
      *
      * @param url url de monitoring à tester
      * @return les informations sur le projet correspondant à l'URL de monitoring ou l'erreur lancée lors du test
      */
     @RequestMapping(value = "/check", method = RequestMethod.GET)
     public ResponseEntity<Info> check(@RequestParam URI url) {
-        return applicationService.check(url);
+        return instanceService.findInfo(url);
     }
 }

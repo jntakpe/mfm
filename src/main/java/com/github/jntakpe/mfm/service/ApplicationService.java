@@ -1,18 +1,13 @@
 package com.github.jntakpe.mfm.service;
 
 import com.github.jntakpe.mfm.model.Application;
-import com.github.jntakpe.mfm.model.Info;
 import com.github.jntakpe.mfm.repository.ApplicationRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -27,12 +22,9 @@ public class ApplicationService {
 
     private ApplicationRepository applicationRepository;
 
-    private RestTemplate restTemplate;
-
     @Autowired
-    public ApplicationService(ApplicationRepository applicationRepository, RestTemplate restTemplate) {
+    public ApplicationService(ApplicationRepository applicationRepository) {
         this.applicationRepository = applicationRepository;
-        this.restTemplate = restTemplate;
     }
 
     /**
@@ -60,24 +52,4 @@ public class ApplicationService {
         return Optional.ofNullable(applicationRepository.findByName(name));
     }
 
-    /**
-     * Vérifie si l'url de monitoring du projet est up
-     *
-     * @param url url de monitoring du projet
-     * @return renvoie une {@link org.springframework.http.ResponseEntity} contenant les infos du projet
-     */
-    public ResponseEntity<Info> check(URI url) {
-        LOG.debug("Checking connection to {}", url);
-        return restTemplate.getForEntity(url, Info.class);
-    }
-
-    /**
-     * Récupère la liste de toutes les applications
-     *
-     * @return liste des applications
-     */
-    public List<Application> findAll() {
-        LOG.debug("Getting all applications settings");
-        return applicationRepository.findAll();
-    }
 }

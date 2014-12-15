@@ -15,6 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
@@ -26,6 +27,7 @@ import java.io.IOException;
  */
 @Configuration
 @EnableMetrics
+@EnableScheduling
 @EnableAutoConfiguration
 @EnableConfigurationProperties
 @ComponentScan("com.github.jntakpe.mfm")

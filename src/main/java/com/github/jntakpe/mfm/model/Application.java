@@ -4,6 +4,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,6 +24,8 @@ public class Application extends IdMongoEntity {
 
     @NotNull
     private Integer interval;
+
+    private Instant nextCheck;
 
     private Set<Instance> instances = new HashSet<>();
 
@@ -48,6 +51,14 @@ public class Application extends IdMongoEntity {
 
     public void setInterval(Integer interval) {
         this.interval = interval;
+    }
+
+    public Instant getNextCheck() {
+        return nextCheck;
+    }
+
+    public void setNextCheck(Instant nextCheck) {
+        this.nextCheck = nextCheck;
     }
 
     public Set<Instance> getInstances() {
@@ -81,6 +92,7 @@ public class Application extends IdMongoEntity {
                 .append("name", name)
                 .append("active", active)
                 .append("interval", interval)
+                .append("nextCheck", nextCheck)
                 .toString();
     }
 }

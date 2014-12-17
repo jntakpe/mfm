@@ -11,4 +11,5 @@ public class Constants {
 
     public static final String PROD_PROFILE = "prod";
 
+    public static final long MIN_UPDATE_RATE = 1000L;
 }
